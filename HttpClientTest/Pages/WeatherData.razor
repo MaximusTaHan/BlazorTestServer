@@ -1,0 +1,77 @@
+@page "/weather"
+
+@inject IHttpClientFactory _clientFactory
+
+<h3>Weather Data</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    // if there was an issue getting data
+    <div class ="h2">@errorString</div>
+}
+else if (forecast is null)
+{
+    // while waiting for data 
+    <div class ="h4">Loading...</div>
+}
+else
+{
+    //display data in tables
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Date</th>
+                <th>Weather State</th>
+                <th>Low</th>
+                <th>High</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var w in forecast.Consolidated_weather)
+            {
+                w.Max_temp = (int)Math.Round(w.Max_temp);
+                w.Min_temp = (int)Math.Round(w.Min_temp);
+                <tr>
+                    <td>@w.Applicable_date</td>
+                    <td>@w.Weather_state_name</td>
+                    <td>@w.Min_temp C°</td>
+                    <td>@w.Max_temp C°</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    WeatherForecastModel forecast;
+    string errorString;
+    // Run right on initialized (would miss timing for rendering otherwise)
+    protected override async Task OnInitializedAsync()
+    {
+        @* var request = new HttpRequestMessage(HttpMethod.Get, 
+            "https://www.metaweather.com/api/location/890869/");
+        var client = _clientFactory.CreateClient();
+
+        HttpResponseMessage response = await client.SendAsync(request);
+
+        if(response.IsSuccessStatusCode)
+        {
+            forecast = await response.Content.ReadFromJsonAsync<WeatherForecastModel>();
+            errorString = null;
+        }
+        else
+        {
+            errorString = $"There was an error getting our forecast: { response.ReasonPhrase }";
+        } *@
+        var client = _clientFactory.CreateClient("meta");
+
+        try
+        {
+            forecast = await client.GetFromJsonAsync<WeatherForecastModel>("location/890869/");
+            errorString = null;
+        }
+        catch (Exception ex)
+        {
+            errorString = $"There was an error getting our forecast: { ex.Message }";
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "8NBifu4pJ7gMml09Csi60Ww4tgumHesRaOMBQYpEoqNsE/8UDS2jxMtY9v5mxnuKhV6OTmtkS4QOO48GN79Duw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Max\\dotnet\\BlazorServerTest\\HttpClientTest\\HttpClientTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Max\\.nuget\\packages\\system.net.http.json\\6.0.0\\system.net.http.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\Max\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Max\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\Max\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
