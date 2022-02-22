@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using HttpClientTest.Data;
+using System.Text;
 using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +20,20 @@ builder.Services.AddHttpClient("meta", c =>
 builder.Services.AddHttpClient("vast", c =>
 {
     c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("GetVastToken"));
-    c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(builder.Configuration.GetValue<string>("Secret"));
+    var secret = builder.Configuration.GetValue<string>("Secret");
+    var key = builder.Configuration.GetValue<string>("Key");
+    var encoded = Base64Encode($"{key}:{secret}");
+    c.DefaultRequestHeaders.Add("Authorization", "Basic " + encoded);
+    c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+   /* c.DefaultRequestHeaders.Add("Authorization", "Basic " + Base64Encode($"{key}:{secret}")); */
+    
 });
+
+    static string Base64Encode(string configToEncode)
+    {
+        byte[] configToBytes = Encoding.UTF8.GetBytes(configToEncode);
+        return Convert.ToBase64String(configToBytes);
+    }
 
 var app = builder.Build();
 

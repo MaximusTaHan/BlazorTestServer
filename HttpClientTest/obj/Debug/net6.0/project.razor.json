@@ -144,6 +144,92 @@
         }
       },
       {
+        "HashCode": -1688853661,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Pages.AccessToken",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "AccessToken"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Pages.AccessToken"
+        }
+      },
+      {
+        "HashCode": 936484052,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Pages.AccessToken",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HttpClientTest.Pages.AccessToken"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Pages.AccessToken",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1567602072,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Shared.SurveyPrompt",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -2036315720,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Shared.SurveyPrompt",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HttpClientTest.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1078497428,
         "Kind": "Components.Component",
         "Name": "HttpClientTest.Shared.MainLayout",
@@ -236,59 +322,6 @@
           "Runtime.Name": "Components.None",
           "Common.TypeName": "HttpClientTest.Shared.MainLayout.Body",
           "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1567602072,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.Shared.SurveyPrompt",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": -2036315720,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.Shared.SurveyPrompt",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HttpClientTest.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16693,6 +16726,11 @@
       "FilePath": "c:\\Users\\Max\\dotnet\\BlazorServerTest\\HttpClientTest\\Pages\\Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Max\\dotnet\\BlazorServerTest\\HttpClientTest\\Pages\\AccessToken.razor",
+      "TargetPath": "Pages\\AccessToken.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\Max\\dotnet\\BlazorServerTest\\HttpClientTest\\Pages\\FetchData.razor",
