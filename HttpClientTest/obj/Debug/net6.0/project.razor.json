@@ -177,6 +177,39 @@
         }
       },
       {
+        "HashCode": 59588644,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.App",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.App"
+        }
+      },
+      {
+        "HashCode": 1335394034,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.App",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HttpClientTest.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1567602072,
         "Kind": "Components.Component",
         "Name": "HttpClientTest.Shared.SurveyPrompt",
@@ -355,39 +388,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "HttpClientTest.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 59588644,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.App",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.App"
-        }
-      },
-      {
-        "HashCode": 1335394034,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.App",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HttpClientTest.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

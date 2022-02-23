@@ -1,14 +1,13 @@
 @page "/access"
-
-@using System.Net.Http.Headers;
+@using HttpClientTest.Controller
 @inject IHttpClientFactory _clientFactory
 
-@if (string.IsNullOrWhiteSpace(errorString) == false)
+@if (string.IsNullOrWhiteSpace(tokenTracker.errorString) == false)
 {
     // if there was an issue getting data
-    <div class ="h2">@errorString</div>
+    <div class ="h2">@tokenTracker.errorString</div>
 }
-else if (responseInfo is null)
+else if (tokenTracker.responseInfo is null)
 {
     // while waiting for data 
     <div class ="h4">Loading...</div>
@@ -28,70 +27,20 @@ else
         </thead>
         <tbody>
                 <tr>
-                    <td>@responseInfo.Scope</td>
-                    <td>@responseInfo.Token_type</td>
-                    <td>@responseInfo.Expires_in</td>
-                    <td>@responseInfo.Refresh_token</td>
-                    <td>@responseInfo.Access_token</td>
+                    <td>@tokenTracker.responseInfo.Scope</td>
+                    <td>@tokenTracker.responseInfo.Token_type</td>
+                    <td>@tokenTracker.responseInfo.Expires_in</td>
+                    <td>@tokenTracker.responseInfo.Refresh_token</td>
+                    <td>@tokenTracker.responseInfo.Access_token</td>
                 </tr>
         </tbody>
     </table>
 }
 
 @code {
-    AccessModel responseInfo;
-    string errorString;
-    // Run right on initialized (would miss timing for rendering otherwise)
+    TokenTracker tokenTracker = new TokenTracker();
     protected override async Task OnInitializedAsync()
     {
-        @*
-        var request = new HttpRequestMessage(HttpMethod.Post, 
-            "token")
-            {
-                Version = HttpVersion.Version10
-            };
-        var client = _clientFactory.CreateClient("vast");
-        request.Content = new StringContent("{\"grant_type\":\"client_credentials\",\"scope\": \"testSctope\"", Encoding.UTF8, "application/json");
-        HttpResponseMessage response = await client.SendAsync(request);
-        *@
-        // defines the request body content
-        var data = new[]
-        {
-            new KeyValuePair<string, string>("grant_type", "client_credentials"),
-            new KeyValuePair<string, string>("scope", "testScope"),
-        };
-        
-        var request = new HttpRequestMessage(HttpMethod.Post, "https://api.vasttrafik.se/token?client_id=DBn0fkhGHVQb7zIYAUFrvg27Acga&client_secret=dQvEO2gFKFFuKyZOJZYdPpDfyWUa") 
-        {
-            // sets the content of the request body
-            Content = new FormUrlEncodedContent(data)
-        };
-        var client = _clientFactory.CreateClient();
-
-
-
-        HttpResponseMessage response = await client.SendAsync(request);
-
-        if(response.IsSuccessStatusCode)
-        {
-            responseInfo = await response.Content.ReadFromJsonAsync<AccessModel>();
-            errorString = null;
-        }
-        else
-        {
-            errorString = $"There was an error getting our access: { response.ReasonPhrase }";
-        }
-        @*
-        var client = _clientFactory.CreateClient("vast");
-
-        try
-        {
-            responseInfo = await client.GetFromJsonAsync<AccessModel>("token");
-            errorString = null;
-        }
-        catch (Exception ex)
-        {
-            errorString = $"There was an error getting our Access: { ex.Message }";
-        }*@
+        await tokenTracker.RetrievePost(_clientFactory);
     }
 }
