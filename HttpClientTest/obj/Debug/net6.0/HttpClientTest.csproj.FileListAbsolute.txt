@@ -25,3 +25,5 @@ C:\Users\Max\dotnet\BlazorServerTest\HttpClientTest\obj\Debug\net6.0\HttpClientT
 C:\Users\Max\dotnet\BlazorServerTest\HttpClientTest\obj\Debug\net6.0\ref\HttpClientTest.dll
 C:\Users\Max\dotnet\BlazorServerTest\HttpClientTest\obj\Debug\net6.0\HttpClientTest.pdb
 C:\Users\Max\dotnet\BlazorServerTest\HttpClientTest\obj\Debug\net6.0\HttpClientTest.genruntimeconfig.cache
+C:\Users\Max\dotnet\BlazorServerTest\HttpClientTest\bin\Debug\net6.0\Microsoft.Net.Http.Server.dll
+C:\Users\Max\dotnet\BlazorServerTest\HttpClientTest\obj\Debug\net6.0\HttpClientTest.csproj.CopyComplete

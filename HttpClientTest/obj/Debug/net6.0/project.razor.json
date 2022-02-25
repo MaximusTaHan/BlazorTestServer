@@ -12,39 +12,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -1634544555,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.Pages.Counter",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": -1835526820,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.Pages.Counter",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HttpClientTest.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -2117274796,
         "Kind": "Components.Component",
         "Name": "HttpClientTest.Pages.FetchData",
@@ -144,6 +111,39 @@
         }
       },
       {
+        "HashCode": -1634544555,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Pages.Counter",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Pages.Counter"
+        }
+      },
+      {
+        "HashCode": -1835526820,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Pages.Counter",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HttpClientTest.Pages.Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1688853661,
         "Kind": "Components.Component",
         "Name": "HttpClientTest.Pages.AccessToken",
@@ -173,92 +173,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "HttpClientTest.Pages.AccessToken",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 59588644,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.App",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.App"
-        }
-      },
-      {
-        "HashCode": 1335394034,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.App",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HttpClientTest.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.App",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1567602072,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.Shared.SurveyPrompt",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": -2036315720,
-        "Kind": "Components.Component",
-        "Name": "HttpClientTest.Shared.SurveyPrompt",
-        "AssemblyName": "HttpClientTest",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "HttpClientTest.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -388,6 +302,92 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "HttpClientTest.Shared.NavMenu",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1567602072,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Shared.SurveyPrompt",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -2036315720,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.Shared.SurveyPrompt",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HttpClientTest.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 59588644,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.App",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.App"
+        }
+      },
+      {
+        "HashCode": 1335394034,
+        "Kind": "Components.Component",
+        "Name": "HttpClientTest.App",
+        "AssemblyName": "HttpClientTest",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "HttpClientTest.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "HttpClientTest.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

@@ -1,6 +1,15 @@
 @page "/access"
 @using HttpClientTest.Controller
+@using System.Timers
+@using HttpClientTest.Models
+@using System.Net.Http.Headers
+@using System.Xml.Serialization
+@using System.Web
+@using Microsoft.Net.Http.Server
 @inject IHttpClientFactory _clientFactory
+
+
+<h2>Test timer</h2>
 
 @if (string.IsNullOrWhiteSpace(tokenTracker.errorString) == false)
 {
@@ -18,7 +27,7 @@ else
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>Scope</th>
+                <th></th>
                 <th>Token type</th>
                 <th>Expires in</th>
                 <th>Refresh token</th>
@@ -37,10 +46,109 @@ else
     </table>
 }
 
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    // if there was an issue getting data
+    <div class ="h2">@errorString</div>
+}
+else if (departures.Departure is null)
+{
+    // while waiting for data 
+    <div class ="h4">Loading departures...</div>
+}
+else
+{
+    //display data in tables
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Buss</th>
+                <th>Time</th>
+                <th>Direction</th>
+                <th>Accessibility</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var w in departures.Departure)
+            {
+                <tr>
+                    <td>@w.name</td>
+                    <td>@w.time</td>
+                    <td>@w.direction</td>
+                    <td>@w.accessibility</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 @code {
     TokenTracker tokenTracker = new TokenTracker();
+    DepartureBoard.Board departures = new DepartureBoard.Board();
+    string errorString;
     protected override async Task OnInitializedAsync()
     {
         await tokenTracker.RetrievePost(_clientFactory);
+        var dateTime = new[]
+        {
+            new KeyValuePair<string, string>("id", "9021014005421000"),
+            new KeyValuePair<string, string>("date", DateTime.Now.ToString("MM/dd/yyyy")),
+            new KeyValuePair<string, string>("time", DateTime.Now.ToString("HH/mm")),
+        };
+        var query = new Dictionary<string,string>()
+            {
+                ["id"] = "9021014005421000",
+                ["date"] = DateTime.Now.ToString("MM/dd/yyyy"),
+                ["time"] = DateTime.Now.ToString("HH/mm"),
+                ["format"] = "json",
+            };
+        var request = new HttpRequestMessage(HttpMethod.Get, "departureBoard")
+        {
+            Content = new FormUrlEncodedContent(query),
+        };
+        
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenTracker.responseInfo.Access_token);
+        var client = _clientFactory.CreateClient("departureBoardURL");
+        HttpResponseMessage response = await client.SendAsync(request);
+        
+        if(response.IsSuccessStatusCode)
+        {
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            departures = await response.Content.ReadFromJsonAsync<DepartureBoard.Board>();
+            errorString = null;
+        }
+        else
+        {
+            errorString = $"There was an error getting our departures: { response.ReasonPhrase }";
+        } 
+        StartTimer();
+
+
+
+    }
+    private System.Timers.Timer _timer;
+
+    private void StartTimer()
+    {
+        _timer = new System.Timers.Timer(1000);
+        _timer.Elapsed += CountDownTimer;
+        _timer.Enabled = true;
+    }
+    public void CountDownTimer(Object source, ElapsedEventArgs e)
+    {
+        if (tokenTracker.responseInfo.Expires_in > 0)
+        {
+            tokenTracker.responseInfo.Expires_in--;
+            InvokeAsync(() => StateHasChanged());
+        }
+        else
+        {
+            _timer.Enabled = false;
+            TimerElapsedHandler();
+        }
+    }
+    private async void TimerElapsedHandler()
+    {
+        await tokenTracker.RetrievePost(_clientFactory);
+        StartTimer();
     }
 }

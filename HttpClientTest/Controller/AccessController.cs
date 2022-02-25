@@ -24,7 +24,6 @@ namespace HttpClientTest.Controller
                 new KeyValuePair<string, string>("grant_type", "client_credentials"),
                 new KeyValuePair<string, string>("scope", "testScope"),
             };
-            
             var request = new HttpRequestMessage(HttpMethod.Post, "token") 
             {
                 // sets the content of the request body

@@ -27,8 +27,14 @@ builder.Services.AddHttpClient("vast", c =>
 
     c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encoded);
    /* c.DefaultRequestHeaders.Add("Authorization", "Basic " + Base64Encode($"{key}:{secret}")); */
-    
 });
+builder.Services.AddHttpClient("departureBoardURL", c =>
+{
+    c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("GetDepartureBoard"));
+    c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+});
+
+builder.Services.AddTransient<Timer.Services.TokenTimer>();
 
 var app = builder.Build();
 
