@@ -1,47 +1,40 @@
-using System.Xml.Serialization;
+using System.Text.Json.Serialization;
 
 namespace HttpClientTest.Models
 {
-    public partial class DepartureBoard
-    {
-        public class JourneyDetailRef
-        {
-            public string @ref { get; set; }
-        }
+// Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
+    public record JourneyDetailRef(
+        [property: JsonPropertyName("ref")] string Ref
+    );
 
-        public class Departure
-        {
-            public string name { get; set; }
-            public string sname { get; set; }
-            public string journeyNumber { get; set; }
-            public string type { get; set; }
-            public string stopid { get; set; }
-            public string stop { get; set; }
-            public string time { get; set; }
-            public string date { get; set; }
-            public string journeyid { get; set; }
-            public string direction { get; set; }
-            public string track { get; set; }
-            public string rtTime { get; set; }
-            public string rtDate { get; set; }
-            public string fgColor { get; set; }
-            public string bgColor { get; set; }
-            public string stroke { get; set; }
-            public string accessibility { get; set; }
-            public JourneyDetailRef JourneyDetailRef { get; set; }
-        }
+    public record Departure(
+        [property: JsonPropertyName("name")] string Name,
+        [property: JsonPropertyName("sname")] string Sname,
+        [property: JsonPropertyName("journeyNumber")] string JourneyNumber,
+        [property: JsonPropertyName("type")] string Type,
+        [property: JsonPropertyName("stopid")] string Stopid,
+        [property: JsonPropertyName("stop")] string Stop,
+        [property: JsonPropertyName("time")] string Time,
+        [property: JsonPropertyName("date")] string Date,
+        [property: JsonPropertyName("journeyid")] string Journeyid,
+        [property: JsonPropertyName("direction")] string Direction,
+        [property: JsonPropertyName("track")] string Track,
+        [property: JsonPropertyName("rtTime")] string RtTime,
+        [property: JsonPropertyName("rtDate")] string RtDate,
+        [property: JsonPropertyName("fgColor")] string FgColor,
+        [property: JsonPropertyName("bgColor")] string BgColor,
+        [property: JsonPropertyName("stroke")] string Stroke,
+        [property: JsonPropertyName("accessibility")] string Accessibility,
+        [property: JsonPropertyName("JourneyDetailRef")] JourneyDetailRef JourneyDetailRef
+    );
 
-        public class Board
-        {
-            public string noNamespaceSchemaLocation { get; set; }
-            public string servertime { get; set; }
-            public string serverdate { get; set; }
-            public List<Departure> Departure { get; set; }
-        }
+    public record DepartureBoard(
+        [property: JsonPropertyName("noNamespaceSchemaLocation")] string NoNamespaceSchemaLocation,
+        [property: JsonPropertyName("servertime")] string Servertime,
+        [property: JsonPropertyName("serverdate")] string Serverdate,
+        [property: JsonPropertyName("Departure")] List<Departure> Departure
+    );
 
-        public class Root
-        {
-            public DepartureBoard DepartureBoard { get; set; }
-        }
-    }
+    public record Root(
+        [property: JsonPropertyName("DepartureBoard")] DepartureBoard departureBoard);
 }

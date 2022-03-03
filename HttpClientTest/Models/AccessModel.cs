@@ -1,4 +1,4 @@
-
+using System.Text.Json.Serialization;
 
 namespace HttpClientTest.Models
 {
@@ -11,4 +11,5 @@ namespace HttpClientTest.Models
         public string Access_token { get; set; }
     
     }
+
 }

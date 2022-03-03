@@ -3,9 +3,8 @@
 @using System.Timers
 @using HttpClientTest.Models
 @using System.Net.Http.Headers
-@using System.Xml.Serialization
-@using System.Web
-@using Microsoft.Net.Http.Server
+@using Microsoft.AspNetCore.WebUtilities
+@using System.Text.Json
 @inject IHttpClientFactory _clientFactory
 
 
@@ -51,7 +50,7 @@ else
     // if there was an issue getting data
     <div class ="h2">@errorString</div>
 }
-else if (departures.Departure is null)
+else if (departures is null)
 {
     // while waiting for data 
     <div class ="h4">Loading departures...</div>
@@ -69,51 +68,47 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var w in departures.Departure)
+            @foreach (var w in objDepartures.departureBoard.Departure)
             {
                 <tr>
-                    <td>@w.name</td>
-                    <td>@w.time</td>
-                    <td>@w.direction</td>
-                    <td>@w.accessibility</td>
+                    <td>@w.Name</td>
+                    <td>@w.Time</td>
+                    <td>@w.Direction</td>
+                    <td>@w.Accessibility</td>
+                    <td>@w.BgColor</td>
                 </tr>
             }
         </tbody>
     </table>
 }
 @code {
+    
     TokenTracker tokenTracker = new TokenTracker();
-    DepartureBoard.Board departures = new DepartureBoard.Board();
+    Root objDepartures;
+    string departures;
     string errorString;
     protected override async Task OnInitializedAsync()
     {
         await tokenTracker.RetrievePost(_clientFactory);
-        var dateTime = new[]
-        {
-            new KeyValuePair<string, string>("id", "9021014005421000"),
-            new KeyValuePair<string, string>("date", DateTime.Now.ToString("MM/dd/yyyy")),
-            new KeyValuePair<string, string>("time", DateTime.Now.ToString("HH/mm")),
-        };
         var query = new Dictionary<string,string>()
             {
                 ["id"] = "9021014005421000",
-                ["date"] = DateTime.Now.ToString("MM/dd/yyyy"),
-                ["time"] = DateTime.Now.ToString("HH/mm"),
+                ["date"] = DateTime.Now.ToString("yyyy/MM/dd"),
+                ["time"] = DateTime.Now.ToString("HH:mm"),
                 ["format"] = "json",
             };
-        var request = new HttpRequestMessage(HttpMethod.Get, "departureBoard")
-        {
-            Content = new FormUrlEncodedContent(query),
-        };
-        
+
+        var uri = QueryHelpers.AddQueryString("https://api.vasttrafik.se/bin/rest.exe/v2/departureBoard", query);
+        var request = new HttpRequestMessage(HttpMethod.Get, uri);
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenTracker.responseInfo.Access_token);
-        var client = _clientFactory.CreateClient("departureBoardURL");
+        var client = _clientFactory.CreateClient();
         HttpResponseMessage response = await client.SendAsync(request);
+        
         
         if(response.IsSuccessStatusCode)
         {
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            departures = await response.Content.ReadFromJsonAsync<DepartureBoard.Board>();
+            departures = await response.Content.ReadAsStringAsync();
+            objDepartures = JsonSerializer.Deserialize<Root>(departures);
             errorString = null;
         }
         else
